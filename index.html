@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tech Store</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+
+<body class="inicio">
+    <header>
+
+    <img src="img/logo.png" alt="Logo Tech Store">
+
+    <h1>Tech Store</h1>
+
+    <nav>
+
+        <a href="index.html">Inicio</a>
+
+        <a href="pages/productos.html">Productos</a>
+
+        <a href="pages/nosotros.html">Nosotros</a>
+
+        <a href="pages/blog.html">Blog</a>
+
+        <a href="pages/registro.html">Registro</a>
+        
+        <a href="pages/login.html">Login</a>
+
+        <a href="pages/contacto.html">Contacto</a>
+
+    </nav>
+
+    <a href="pages/carrito.html" class="carrito">
+        🛒 Carrito: <span id="contadorCarrito">0</span>
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <section>
+
+        <h2>Bienvenido a Tech Store</h2>
+
+        <p>
+            Encuentra productos tecnológicos de calidad
+            para tu hogar y trabajo.
+        </p>
+
+<button type="button" onclick="window.location.href='pages/productos.html'">
+    Ver productos
+</button>
+    </section>
+
+
+
+    <section class="productos-destacados">
+
+
+        <h2>Productos destacados</h2>
+
+
+        <article>
+
+           <img src="img/mouse.jpg" alt="Mouse Gamer RGB">
+
+            <h3>Mouse Gamer RGB</h3>
+
+            <p>
+                 Mouse profesional con iluminación RGB.
+            </p>
+            <p>
+    Precio: $20.000
+            </p>
+
+            <button type="button"
+        onclick="agregarCarrito('Mouse Gamer RGB', 20000, 'img/mouse.jpg')">
+    Agregar al carrito
+</button>
+
+        </article>
+
+
+
+        <article>
+
+           
+            <img src="img/audifonos.jpg" alt="Audífonos Bluetooth">
+
+
+             <h3>Audífonos Bluetooth</h3>
+
+            <p>
+               Audífonos inalámbricos con gran calidad de sonido.
+            </p>
+
+            <p>
+
+                Precio: $35.000
+            </p>
+
+           <button type="button"
+        onclick="agregarCarrito('Audífonos Bluetooth', 35000, 'img/audifonos.jpg')">
+    Agregar al carrito
+</button>
+
+        </article>
+
+        <article>
+
+    <img src="img/teclado.jpg" alt="Teclado Gamer RGB">
+
+    <h3>Teclado Gamer RGB</h3>
+
+    <p>
+        Teclado mecánico con iluminación RGB.
+    </p>
+
+    <p>
+        Precio: $45.000
+    </p>
+
+    <button type="button"
+        onclick="agregarCarrito('Teclado Gamer RGB', 45000, 'img/teclado.jpg')">
+        Agregar al carrito
+    </button>
+
+</article>
+
+<article>
+
+    <img src="img/monitor.jpeg"
+         alt="Monitor Gamer 27 pulgadas">
+
+    <h3>Monitor Gamer 27 pulgadas</h3>
+
+    <p>
+        Monitor gamer Full HD de 27 pulgadas con 165Hz.
+    </p>
+
+    <p>
+        Precio: $129.990
+    </p>
+
+    <button type="button"
+            onclick="agregarCarrito('Monitor Gamer 27 pulgadas', 129990, 'img/monitor.jpeg')">
+        Agregar al carrito
+    </button>
+
+</article>
+
+
+    </section>
+
+    <section class="seccion-video">
+
+    <h2>Tecnología en acción</h2>
+
+    <p>
+        Descubre productos tecnológicos diseñados para mejorar
+        tu experiencia de entretenimiento y trabajo.
+    </p>
+
+    <video class="video-inicio" controls>
+        <source src="video/inicio-tech.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Tech Store - Todos los derechos reservados
+    </p>
+
+</footer>
+
+<script src="js/carrito.js"></script>
+
+<script src="js/sesion.js"></script>
+
+</body>
+
+
+</html>

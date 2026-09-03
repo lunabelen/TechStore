@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Producto - Tech Store</title>
+
+    <link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <img src="../img/logo.png" alt="Logo Tech Store">
+
+    <h1>Editar Producto</h1>
+
+<div id="cabeceraSesion" class="cabecera-sesion"></div>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Modificar producto</h2>
+
+        <form id="formProducto" novalidate>
+
+            <label for="codigo">
+                Código producto:
+            </label>
+
+            <input type="text"
+                   id="codigo"
+                   name="codigo"
+                   >
+
+            <label for="nombreProducto">
+                Nombre:
+            </label>
+
+            <input type="text"
+                   id="nombreProducto"
+                   name="nombreProducto"
+                   >
+
+            <label for="descripcion">
+                Descripción:
+            </label>
+
+            <textarea id="descripcion"
+                      name="descripcion"></textarea>
+
+            <label for="precio">
+                Precio:
+            </label>
+
+            <input type="number"
+                   id="precio"
+                   name="precio"
+                   step="0.01">
+
+            <label for="stock">
+                Stock:
+            </label>
+
+            <input type="number"
+                   id="stock"
+                   name="stock"
+                   >
+
+            <label for="stockCritico">
+                Stock crítico:
+            </label>
+
+            <input type="number"
+                   id="stockCritico"
+                   name="stockCritico"
+                   >
+
+            <label for="categoria">
+                Categoría:
+            </label>
+
+            <select id="categoria"
+                    name="categoria">
+
+                <option value="">
+                    Seleccione una categoría
+                </option>
+
+                <option value="accesorios">
+                    Accesorios
+                </option>
+
+                <option value="computacion">
+                    Computación
+                </option>
+
+                <option value="audio">
+                    Audio
+                </option>
+
+            </select>
+
+            <label for="imagen">
+                Imagen:
+            </label>
+
+            <input type="file"
+                   id="imagen"
+                   name="imagen">
+
+            <button type="submit">
+                Guardar cambios
+            </button>
+
+            <div id="mensajeProducto"></div>
+
+        </form>
+
+        <p>
+            <a href="productos-admin.html">
+                Volver a productos
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 Tech Store - Panel Administrador
+    </p>
+
+</footer>
+
+<script src="../js/productos.js"></script>
+
+<script src="../js/admin-productos.js"></script>
+
+<script src="../js/sesion.js"></script>
+
+<script src="../js/permisos.js"></script>
+
+</body>
+
+</html>  

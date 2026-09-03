@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuarios Administrador - Tech Store</title>
+
+    <link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <img src="../img/logo.png" alt="Logo Tech Store">
+
+    <h1>Administración de Usuarios</h1>
+
+<div id="cabeceraSesion" class="cabecera-sesion"></div>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Usuarios</h2>
+
+        <p>
+            Desde esta sección puedes revisar los usuarios
+            registrados en Tech Store.
+        </p>
+
+        <a href="nuevo-usuario.html">
+            Nuevo usuario
+        </a>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>RUN</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Tipo</th>
+                    <th>Región / Comuna</th>
+                    <th>Acción</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="cuerpoUsuarios">
+                <!-- Filas generadas dinámicamente por js/usuarios-admin-listado.js -->
+            </tbody>
+
+        </table>
+
+        <p>
+            <a href="index.html">
+                Volver al panel administrador
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 Tech Store - Panel Administrador
+    </p>
+
+</footer>
+
+<script src="../js/usuarios.js"></script>
+
+<script src="../js/usuarios-admin-listado.js"></script>
+
+<script src="../js/sesion.js"></script>
+
+<script src="../js/permisos.js"></script>
+
+</body>
+
+</html>

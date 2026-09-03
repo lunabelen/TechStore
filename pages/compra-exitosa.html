@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compra exitosa - Tech Store</title>
+
+<link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <img src="../img/logo.png" alt="Logo Tech Store">
+
+    <h1>Tech Store</h1>
+
+    <nav>
+
+        <a href="../index.html">Inicio</a>
+
+        <a href="productos.html">Productos</a>
+
+        <a href="nosotros.html">Nosotros</a>
+
+        <a href="blog.html">Blog</a>
+
+        <a href="registro.html">Registro</a>
+
+        <a href="login.html">Login</a>
+
+        <a href="contacto.html">Contacto</a>
+
+        <a href="carrito.html" class="carrito">
+            🛒 Carrito: <span id="contadorCarrito">0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section id="seccionExito" class="confirmacion-pedido">
+
+    <div class="icono-exito">✔</div>
+
+    <h2>¡Compra realizada con éxito!</h2>
+
+    <p id="mensajeCliente">Gracias por tu compra en Tech Store.</p>
+
+    <div class="datos-pedido">
+        <p><strong>N° de pedido:</strong> <span id="folioPedido">-</span></p>
+        <p><strong>Fecha:</strong> <span id="fechaPedido">-</span></p>
+    </div>
+
+    <h3>Resumen del pedido</h3>
+
+    <ul id="resumenPedido"></ul>
+
+    <h3 id="totalPedido">Total: $0</h3>
+
+    <div class="acciones-confirmacion">
+        <a href="productos.html" class="boton">Seguir comprando</a>
+        <a href="../index.html" class="boton boton-secundario">Volver al inicio</a>
+    </div>
+
+</section>
+
+
+<section id="seccionSinPedido" style="display:none; text-align:center;">
+
+    <h2>No encontramos una compra reciente</h2>
+    <p>Parece que llegaste aquí sin finalizar una compra.</p>
+    <a href="productos.html" class="boton">Ir a productos</a>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<p>
+© 2026 Tech Store - Todos los derechos reservados
+</p>
+
+</footer>
+
+
+
+<script src="../js/carrito.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const pedido = JSON.parse(localStorage.getItem("ultimoPedido") || "null");
+
+    if (!pedido) {
+        document.getElementById("seccionExito").style.display = "none";
+        document.getElementById("seccionSinPedido").style.display = "block";
+        return;
+    }
+
+    document.getElementById("folioPedido").textContent = pedido.folio;
+    document.getElementById("fechaPedido").textContent = pedido.fecha;
+
+    if (pedido.correoCliente) {
+        document.getElementById("mensajeCliente").textContent =
+            "Gracias por tu compra, " + pedido.correoCliente + ".";
+    }
+
+    const lista = document.getElementById("resumenPedido");
+
+    pedido.productos.forEach(function (producto) {
+
+        const item = document.createElement("li");
+
+        item.innerHTML =
+            "<span>" + producto.nombre + " x " + producto.cantidad + "</span>" +
+            "<span>$" + (producto.precio * producto.cantidad).toLocaleString() + "</span>";
+
+        lista.appendChild(item);
+    });
+
+    document.getElementById("totalPedido").textContent =
+        "Total: $" + pedido.total.toLocaleString();
+});
+
+</script>
+
+<script src="../js/sesion.js"></script>
+
+</body>
+
+
+</html>

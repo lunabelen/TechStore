@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carrito - Tech Store</title>
+
+<link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <img src="../img/logo.png" alt="Logo Tech Store">
+
+    <h1>Tech Store</h1>
+
+    <nav>
+
+        <a href="../index.html">Inicio</a>
+
+        <a href="productos.html">Productos</a>
+
+        <a href="nosotros.html">Nosotros</a>
+
+        <a href="blog.html">Blog</a>
+
+        <a href="registro.html">Registro</a>
+
+        <a href="login.html">Login</a>
+
+        <a href="contacto.html">Contacto</a>
+
+        <a href="carrito.html" class="carrito">
+            🛒 Carrito: <span id="contadorCarrito">0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section>
+
+
+<h2>Mi carrito</h2>
+
+
+<p>
+Productos agregados:
+</p>
+
+
+<ul id="listaProductos">
+    
+</ul>
+
+<h3 id="totalCarrito">
+Total: $0
+</h3>
+
+
+
+<button onclick="vaciarCarrito()">
+
+Vaciar carrito
+
+</button>
+
+<button onclick="finalizarCompra()" class="boton-finalizar">
+
+Finalizar compra
+
+</button>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<p>
+© 2026 Tech Store - Todos los derechos reservados
+</p>
+
+</footer>
+
+
+
+<script src="../js/carrito.js"></script>
+
+
+<script src="../js/sesion.js"></script>
+
+</body>
+
+
+</html>

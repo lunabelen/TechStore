@@ -1,0 +1,1445 @@
+/* ============================================================
+   TECH STORE — Hoja de estilos
+   Diseño profesional: paleta consistente, tipografía cuidada,
+   tarjetas con profundidad, formularios y tablas pulidas.
+   ============================================================ */
+
+/* ---------- 1. Variables globales ---------- */
+:root {
+    --color-bg: #f1f5f9;
+    --color-surface: #ffffff;
+    --color-header: #0f172a;
+    --color-header-alt: #1e293b;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-accent-soft: #eff6ff;
+    --color-text: #1e293b;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-danger: #dc2626;
+    --color-danger-hover: #b91c1c;
+    --color-success: #16a34a;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 20px 45px rgba(15, 23, 42, 0.12);
+
+    --fuente: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---------- 2. Reset y base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3, h4 {
+    color: var(--color-header);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+h1 { font-size: 30px; font-weight: 800; }
+h2 { font-size: 24px; font-weight: 700; margin-bottom: 14px; }
+h3 { font-size: 19px; font-weight: 700; }
+
+p { color: var(--color-text); }
+
+a { color: var(--color-accent); }
+
+/* ---------- 3. Encabezado y navegación ---------- */
+header {
+    background: linear-gradient(135deg, var(--color-header), var(--color-header-alt));
+    color: white;
+    padding: 18px 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+    min-height: auto;
+}
+
+header img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+header h1 {
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0;
+    margin-right: auto;
+    white-space: nowrap;
+}
+
+/* En el Home, logo + título quedan agrupados a la izquierda */
+header img + h1 {
+    margin-left: -4px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    color: #ffffff;
+    border-color: var(--color-accent);
+}
+
+.carrito {
+    color: white !important;
+    background-color: rgba(37, 99, 235, 0.25);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    padding: 8px 16px !important;
+    border-radius: 30px;
+    font-weight: 700 !important;
+}
+
+.carrito:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* Estado de sesión (ver js/sesion.js) */
+.saludo-sesion {
+    color: #93c5fd;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+nav a.cerrar-sesion {
+    color: #fca5a5;
+}
+
+nav a.cerrar-sesion:hover {
+    color: #fecaca;
+    border-color: var(--color-danger);
+}
+
+/* Encabezado del panel administrador */
+.cabecera-sesion {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+}
+
+.cabecera-sesion button {
+    background-color: transparent;
+    border: 1px solid rgba(248, 113, 113, 0.5);
+    color: #fca5a5;
+    padding: 7px 14px;
+    font-size: 13px;
+}
+
+.cabecera-sesion button:hover {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+    color: white;
+}
+
+.cabecera-sesion a {
+    color: #93c5fd;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* ---------- 4. Layout principal ---------- */
+main {
+    padding: 40px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: var(--color-surface);
+    padding: 30px;
+    margin-bottom: 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+/* Página de detalle de producto: sección protagonista, sin recuadro pesado */
+main section {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto 24px;
+}
+
+main section img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-soft);
+    display: block;
+    margin: 0 auto 24px;
+    padding: 16px;
+}
+
+main section p {
+    max-width: 800px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+main section ul {
+    line-height: 2;
+    margin-top: 10px;
+}
+
+/* ---------- 5. Botones ---------- */
+button, .boton {
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+button:hover, .boton:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button[onclick="vaciarCarrito()"] {
+    background-color: #ef4444;
+}
+
+button[onclick="vaciarCarrito()"]:hover {
+    background-color: var(--color-danger-hover);
+}
+
+/* ---------- 6. Tarjetas de producto (catálogo, destacados, listas) ---------- */
+article {
+    display: inline-block;
+    width: 250px;
+    min-height: 420px;
+    margin: 12px;
+    padding: 22px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    vertical-align: top;
+    text-align: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+article img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+article h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+article p {
+    color: var(--color-text-muted);
+    font-size: 13.5px;
+}
+
+article strong {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-accent);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+article button {
+    margin-top: 15px;
+    width: 100%;
+}
+
+#catalogoProductos {
+    text-align: center;
+}
+
+#catalogoProductos article {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: top;
+    height: 480px;
+    box-sizing: border-box;
+}
+
+#catalogoProductos article img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: var(--color-accent-soft);
+    border-radius: var(--radius-md);
+    padding: 10px;
+}
+
+#catalogoProductos article button {
+    margin-top: auto;
+}
+
+/* Productos destacados del inicio */
+.productos-destacados {
+    text-align: center;
+}
+
+.productos-destacados article {
+    width: 280px;
+    min-height: 470px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.productos-destacados article img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+    background-color: var(--color-accent-soft);
+    border-radius: var(--radius-md);
+    padding: 12px;
+}
+
+/* Video del Home */
+.seccion-video {
+    text-align: center;
+}
+
+.video-inicio {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* ---------- 7. Formularios ---------- */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    gap: 4px;
+}
+
+form label {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-top: 10px;
+}
+
+input, select, textarea {
+    padding: 11px 13px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-border);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+input[readonly] {
+    background-color: #f8fafc;
+    color: var(--color-text-muted);
+}
+
+form button {
+    width: 100%;
+    max-width: 220px;
+    margin-top: 18px;
+}
+
+/* Mensajes de validación (éxito / error) generados por JS */
+form div[id^="mensaje"]:not(:empty) {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    font-weight: 700;
+    background-color: #fef2f2;
+    color: var(--color-danger-hover);
+    border-left: 4px solid var(--color-danger);
+}
+
+form div[id^="mensaje"]:not(:empty).exito,
+form div[id^="mensaje"]:not(:empty)[data-tipo="exito"] {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border-left-color: var(--color-success);
+}
+
+/* ---------- 8. Carrito de compras ---------- */
+#totalCarrito {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-header);
+}
+
+#listaProductos {
+    max-width: 700px;
+}
+
+#listaProductos li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 110px;
+
+    margin-bottom: 16px;
+    padding: 18px 20px;
+
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+
+#listaProductos li img {
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+    background-color: var(--color-accent-soft);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    margin-right: 20px;
+}
+
+#listaProductos span {
+    flex: 1;
+}
+
+.infoProducto {
+    flex: 1;
+    margin-left: 4px;
+}
+
+.infoProducto strong {
+    font-size: 17px;
+    color: var(--color-header);
+}
+
+.infoProducto p {
+    margin-top: 5px;
+    color: var(--color-text-muted);
+}
+
+#listaProductos li button {
+    background-color: var(--color-danger);
+    color: white;
+    padding: 9px 18px;
+    font-size: 13px;
+}
+
+#listaProductos li button:hover {
+    background-color: var(--color-danger-hover);
+}
+
+/* ---------- 9. Tablas (panel administrador) ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+thead th {
+    text-align: left;
+    padding: 12px 14px;
+    background-color: var(--color-header);
+    color: white;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+thead th:first-child { border-top-left-radius: var(--radius-sm); }
+thead th:last-child { border-top-right-radius: var(--radius-sm); }
+
+tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+tbody tr:hover {
+    background-color: var(--color-accent-soft);
+}
+
+tbody a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+tbody a:hover {
+    text-decoration: underline;
+}
+
+table button {
+    padding: 6px 14px;
+    font-size: 12.5px;
+    background-color: var(--color-danger);
+}
+
+table button:hover {
+    background-color: var(--color-danger-hover);
+}
+
+/* ---------- 10. Chips de estado ---------- */
+.chip {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    background-color: #e2e8f0;
+    color: #1f2937;
+    white-space: nowrap;
+}
+
+.chip-critico {
+    background-color: #fde2e2;
+    color: var(--color-danger-hover);
+}
+
+/* ---------- 11. Panel administrador ---------- */
+.menu-admin {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-bottom: 26px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.menu-admin a {
+    color: var(--color-accent);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 14.5px;
+}
+
+.menu-admin a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
+
+.solo-admin { }
+
+/* ---------- 12. Aviso flotante del carrito ---------- */
+#avisoCarrito {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--color-header);
+    color: white;
+    padding: 14px 22px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    font-weight: 700;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 999;
+    max-width: 280px;
+}
+
+#avisoCarrito.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- 13. Footer (si existe) ---------- */
+footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+/* ---------- 14. Diseño responsivo ---------- */
+@media (max-width: 900px) {
+
+    main section {
+        padding: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding: 16px 20px;
+    }
+
+    header h1 {
+        margin-right: 0;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .cabecera-sesion {
+        margin-left: 0;
+    }
+
+    main {
+        padding: 20px 16px;
+    }
+
+    section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    article {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    main section img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .video-inicio {
+        width: 100%;
+    }
+
+    #listaProductos li {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    #listaProductos li img {
+        margin-bottom: 12px;
+    }
+
+    .infoProducto {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #avisoCarrito {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   Botón "Finalizar compra" y página de confirmación de pedido
+   ============================================================ */
+.boton-finalizar {
+    background-color: var(--color-success);
+    margin-left: 12px;
+}
+
+.boton-finalizar:hover {
+    background-color: #15803d;
+}
+
+.confirmacion-pedido {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.icono-exito {
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    border-radius: 50%;
+    background-color: #dcfce7;
+    color: var(--color-success);
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0 auto 18px;
+}
+
+.datos-pedido {
+    background-color: var(--color-accent-soft);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.datos-pedido p {
+    color: var(--color-text);
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+#resumenPedido {
+    text-align: left;
+    margin: 12px 0 20px;
+}
+
+#resumenPedido li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14.5px;
+    color: var(--color-text);
+}
+
+#totalPedido {
+    text-align: right;
+    color: var(--color-header);
+    margin-bottom: 26px;
+}
+
+.acciones-confirmacion {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.acciones-confirmacion .boton {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton-secundario {
+    background-color: transparent !important;
+    color: var(--color-accent) !important;
+    border: 1.5px solid var(--color-accent);
+    box-shadow: none;
+}
+
+.boton-secundario:hover {
+    background-color: var(--color-accent-soft) !important;
+}
+
+@media (max-width: 600px) {
+    .boton-finalizar {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* =========================================
+   ESTILO MORADO DEL INICIO TECH STORE
+========================================= */
+
+.inicio {
+    background: linear-gradient(
+        135deg,
+        #f4e9ff,
+        #d8b4fe,
+        #a78bfa
+    );
+    min-height: 100vh;
+}
+
+.inicio main {
+    max-width: 1400px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* Header morado oscuro */
+.inicio header {
+    background: linear-gradient(
+        135deg,
+        #140c24,
+        #2e1065,
+        #4c1d95
+    );
+
+    color: white;
+    box-shadow: 0 8px 25px rgba(37, 13, 70, 0.30);
+}
+
+.inicio header h1 {
+    color: white;
+}
+
+.inicio nav a {
+    color: white;
+}
+
+.inicio nav a:hover {
+    color: #e9d5ff;
+}
+
+/* Quita grandes bloques blancos */
+.inicio main section {
+    max-width: none;
+}
+
+/* Primera sección */
+.inicio main > section:first-child {
+    color: white;
+
+    background: linear-gradient(
+        120deg,
+        #201032,
+        #4c1d95,
+        #7c3aed
+    );
+
+    border: none;
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 35px rgba(48, 23, 80, 0.25);
+}
+
+.inicio main > section:first-child h2 {
+    color: white;
+    font-size: 38px;
+}
+
+.inicio main > section:first-child p {
+    color: #eee6ff;
+    font-size: 17px;
+}
+
+/* Botón principal */
+.inicio main > section:first-child button {
+    background: linear-gradient(
+        135deg,
+        #d946ef,
+        #8b5cf6
+    );
+
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.inicio main > section:first-child button:hover {
+    background: linear-gradient(
+        135deg,
+        #c026d3,
+        #7c3aed
+    );
+}
+
+/* Productos destacados */
+.inicio .productos-destacados {
+    max-width: none;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 35px rgba(71, 38, 108, 0.15);
+}
+
+.inicio .productos-destacados h2 {
+    color: #27143d;
+    font-size: 30px;
+}
+
+.inicio .productos-destacados article {
+    border-radius: 20px;
+
+    border: 1px solid #eadcff;
+
+    box-shadow: 0 8px 22px rgba(71, 38, 108, 0.12);
+
+    transition: transform 0.3s;
+}
+
+.inicio .productos-destacados article:hover {
+    transform: translateY(-6px);
+}
+
+.inicio .productos-destacados article img {
+    background: linear-gradient(
+        145deg,
+        #faf7ff,
+        #f1e9ff
+    );
+
+    border-radius: 16px;
+}
+
+/* Botones destacados */
+.inicio .productos-destacados button {
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+
+.inicio .productos-destacados button:hover {
+    background: linear-gradient(
+        135deg,
+        #6d28d9,
+        #9333ea
+    );
+}
+
+/* Zona video */
+.inicio .seccion-video {
+    max-width: none;
+
+    padding: 30px;
+
+    margin-top: 20px;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #160b26,
+        #31135b,
+        #4c1d95
+    );
+
+    border-radius: 25px;
+
+    box-shadow: 0 15px 35px rgba(48, 23, 80, 0.25);
+}
+
+.inicio .seccion-video h2 {
+    color: white;
+    font-size: 30px;
+}
+
+.inicio .seccion-video p {
+    color: #e8dcfa;
+}
+
+/* VIDEO GRANDE */
+.inicio .video-inicio {
+    width: 100%;
+    max-width: none;
+
+    height: auto;
+    max-height: 650px;
+
+    object-fit: cover;
+
+    margin: 20px auto 0;
+
+    border-radius: 22px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.30);
+}
+
+/* Footer */
+.inicio footer {
+    background: linear-gradient(
+        135deg,
+        #130b20,
+        #2e1065
+    );
+
+    color: white;
+
+    text-align: center;
+
+    padding: 22px;
+}
+
+/* Celular */
+@media (max-width: 768px) {
+
+    .inicio main {
+        padding: 10px;
+    }
+
+    .inicio main > section:first-child {
+        padding: 25px;
+    }
+
+    .inicio main > section:first-child h2 {
+        font-size: 30px;
+    }
+
+    .inicio .productos-destacados {
+        padding: 20px;
+    }
+
+    .inicio .seccion-video {
+        padding: 15px;
+    }
+}
+
+/* =====================================================
+   AJUSTE FINAL INICIO - MORADO INTENSO + VIDEO GRANDE
+   SOLO ESTÉTICA
+===================================================== */
+
+body.inicio {
+    background:
+        radial-gradient(circle at 10% 10%, #7c3aed 0%, transparent 28%),
+        radial-gradient(circle at 90% 20%, #c026d3 0%, transparent 28%),
+        linear-gradient(
+            135deg,
+            #1e0a3c 0%,
+            #4c1d95 35%,
+            #7e22ce 68%,
+            #c026d3 100%
+        ) !important;
+
+    background-attachment: fixed;
+}
+
+/* CONTENIDO MÁS ANCHO */
+body.inicio main {
+    width: 100% !important;
+    max-width: 1500px !important;
+    margin: 0 auto !important;
+    padding: 18px !important;
+}
+
+/* HEADER MÁS INTENSO */
+body.inicio header {
+    background:
+        linear-gradient(
+            120deg,
+            #0d0718 0%,
+            #251044 40%,
+            #4c1d95 70%,
+            #6d28d9 100%
+        ) !important;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* BLOQUE BIENVENIDA */
+body.inicio main > section:first-child {
+    width: 100% !important;
+    max-width: none !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(23, 10, 45, 0.98),
+            rgba(76, 29, 149, 0.98),
+            rgba(126, 34, 206, 0.95)
+        ) !important;
+
+    color: white !important;
+
+    border-radius: 28px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+
+    padding: 45px !important;
+
+    box-shadow:
+        0 20px 45px rgba(21, 9, 40, 0.40) !important;
+}
+
+body.inicio main > section:first-child h2 {
+    color: white !important;
+    font-size: 42px !important;
+}
+
+body.inicio main > section:first-child p {
+    color: #f3e8ff !important;
+    font-size: 18px !important;
+}
+
+/* BOTÓN VER PRODUCTOS */
+body.inicio main > section:first-child button {
+    background:
+        linear-gradient(
+            135deg,
+            #e879f9,
+            #a855f7,
+            #7c3aed
+        ) !important;
+
+    color: white !important;
+    border-radius: 14px !important;
+    padding: 13px 28px !important;
+    font-weight: bold !important;
+
+    box-shadow:
+        0 10px 25px rgba(217, 70, 239, 0.35) !important;
+}
+
+/* PRODUCTOS DESTACADOS */
+body.inicio .productos-destacados {
+    width: 100% !important;
+    max-width: none !important;
+
+    background:
+        rgba(248, 245, 255, 0.94) !important;
+
+    border-radius: 28px !important;
+
+    border: 1px solid rgba(216, 180, 254, 0.85) !important;
+
+    box-shadow:
+        0 20px 45px rgba(35, 15, 65, 0.32) !important;
+}
+
+body.inicio .productos-destacados h2 {
+    color: #3b0764 !important;
+    font-size: 32px !important;
+}
+
+/* TARJETAS */
+body.inicio .productos-destacados article {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f4e8ff
+        ) !important;
+
+    border: 1px solid #d8b4fe !important;
+
+    border-radius: 22px !important;
+
+    box-shadow:
+        0 12px 28px rgba(76, 29, 149, 0.18) !important;
+}
+
+body.inicio .productos-destacados article:hover {
+    transform: translateY(-8px) !important;
+
+    box-shadow:
+        0 20px 38px rgba(76, 29, 149, 0.28) !important;
+}
+
+/* BOTONES PRODUCTOS */
+body.inicio .productos-destacados button {
+    background:
+        linear-gradient(
+            135deg,
+            #6d28d9,
+            #9333ea,
+            #c026d3
+        ) !important;
+
+    border-radius: 14px !important;
+}
+
+/* =====================================================
+   VIDEO GRANDE
+===================================================== */
+
+body.inicio .seccion-video {
+    width: 100% !important;
+    max-width: none !important;
+
+    padding: 28px !important;
+
+    margin: 24px 0 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #10051f 0%,
+            #2e1065 40%,
+            #581c87 72%,
+            #7e22ce 100%
+        ) !important;
+
+    border-radius: 28px !important;
+
+    box-shadow:
+        0 22px 50px rgba(18, 7, 35, 0.45) !important;
+}
+
+body.inicio .seccion-video h2 {
+    color: white !important;
+
+    font-size: 34px !important;
+
+    margin-bottom: 8px !important;
+}
+
+body.inicio .seccion-video p {
+    color: #f3e8ff !important;
+
+    font-size: 18px !important;
+
+    margin-bottom: 20px !important;
+}
+
+body.inicio video.video-inicio {
+    display: block !important;
+
+    width: 80% !important;
+    max-width: 800px !important;
+
+    height: auto !important;
+    max-height: none !important;
+
+    margin: 20px auto !important;
+
+    object-fit: contain !important;
+
+    border-radius: 22px !important;
+
+    border: 2px solid rgba(216, 180, 254, 0.35) !important;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.30) !important;
+}
+
+/* FOOTER */
+body.inicio footer {
+    background:
+        linear-gradient(
+            135deg,
+            #0d0718,
+            #2e1065,
+            #4c1d95
+        ) !important;
+
+    color: white !important;
+
+    padding: 25px !important;
+
+    text-align: center !important;
+}
+
+
+/* CELULAR */
+@media (max-width: 768px) {
+
+    body.inicio main {
+        padding: 10px !important;
+    }
+
+    body.inicio video.video-inicio {
+        height: 350px !important;
+    }
+
+    body.inicio main > section:first-child h2 {
+        font-size: 30px !important;
+    }
+}
+
+/* RESTAURA EL TAMAÑO ORIGINAL DEL VIDEO */
+
+body.inicio video.video-inicio {
+    width: 80% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    max-height: none !important;
+
+    display: block !important;
+    margin: 1rem auto !important;
+
+    object-fit: contain !important;
+
+    border-radius: 12px !important;
+}/* RESTAURA EL TAMAÑO ORIGINAL DEL VIDEO */
+
+body.inicio video.video-inicio {
+    width: 80% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    max-height: none !important;
+
+    display: block !important;
+    margin: 1rem auto !important;
+
+    object-fit: contain !important;
+
+    border-radius: 12px !important;
+}
+
+/* ESTILO MORADO PARA LAS IMÁGENES DEL CATÁLOGO */
+
+#catalogoProductos article {
+    background: linear-gradient(145deg, #ffffff, #f3e8ff);
+    border: 1px solid #d8b4fe;
+    border-radius: 22px;
+    box-shadow: 0 10px 25px rgba(76, 29, 149, 0.18);
+}
+
+#catalogoProductos article img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+
+    background: linear-gradient(
+        145deg,
+        #faf5ff,
+        #ede9fe
+    );
+
+    border-radius: 18px;
+    padding: 15px;
+}
+
+#catalogoProductos article:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 35px rgba(76, 29, 149, 0.28);
+}
+
+#catalogoProductos article button {
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #9333ea,
+        #c026d3
+    );
+
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+body {
+    background:
+        linear-gradient(
+            135deg,
+            #f5efff,
+            #ede9fe,
+            #ddd6fe
+        );
+}
+
+#detalleProducto {
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #f5efff
+    );
+
+    border: 1px solid #d8b4fe;
+    border-radius: 24px;
+
+    box-shadow: 0 15px 35px rgba(76, 29, 149, 0.18);
+}
+
+#detalleProducto img {
+    background: linear-gradient(
+        145deg,
+        #faf5ff,
+        #ede9fe
+    );
+
+    border-radius: 20px;
+    padding: 15px;
+}
